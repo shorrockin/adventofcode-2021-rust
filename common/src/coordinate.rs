@@ -1,6 +1,6 @@
 use crate::direction::Direction;
 
-#[derive(Hash, Eq, PartialEq, Clone, Copy, PartialOrd)]
+#[derive(Hash, Eq, PartialEq, Clone, Copy)]
 pub struct Coordinate(pub i32, pub i32);
 
 impl std::fmt::Display for Coordinate {
@@ -20,6 +20,12 @@ impl core::ops::Add<Direction> for Coordinate {
 
     fn add(self, direction: Direction) -> Self::Output {
         Coordinate(self.0 + direction.0, self.1 + direction.1)
+    }
+}
+
+impl PartialOrd for Coordinate {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        (self.0 + self.1).partial_cmp(&(other.0 + other.1))
     }
 }
 

@@ -22,7 +22,7 @@ fn parse(input: &str, part: Part) -> HashMap<Coordinate, u32> {
         Part::Two => {
             let max_coord = initial_map.keys().max().unwrap();
             let width = max_coord.0 + 1; // assumes square grid
-            let width_i32 = width as i32;
+            let width_i32 = width;
             let mut out: HashMap<Coordinate, u32> = HashMap::with_capacity(initial_map.len() * 25);
 
             // certainly could do this synthetically and not build out all the other

@@ -5,13 +5,13 @@ pub struct Coordinate(pub i32, pub i32);
 
 impl std::fmt::Display for Coordinate {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Coordinate(x={}, y={})", self.0, self.1)
+        write!(f, "Coordinate(x={},y={})", self.0, self.1)
     }
 }
 
 impl std::fmt::Debug for Coordinate {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Coordinate({}, {})", self.0, self.1)
+        write!(f, "Coordinate({},{})", self.0, self.1)
     }
 }
 
@@ -25,13 +25,13 @@ impl core::ops::Add<Direction> for Coordinate {
 
 impl PartialOrd for Coordinate {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        (self.0 + self.1).partial_cmp(&(other.0 + other.1))
+        (self.0, self.1).partial_cmp(&(other.0, other.1))
     }
 }
 
 impl Ord for Coordinate {
     fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        (self.0 + self.1).cmp(&(other.0 + other.1))
+        (self.0, self.1).cmp(&(other.0, other.1))
     }
 }
 
